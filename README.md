@@ -6,6 +6,9 @@ Hi vọng ae thích bài này ~
 
 ![Hoa lá hẹ](./cutehoalahe.png)
 
+Cái nhìn toàn cảnh của bài này : 
+
+![1080hd](./vevoilinhtinh.png)
 
 
 V1T CTF 2026 ... 

